@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Activity_B extends BaseActivity {
 
     private static final String TAG=Activity_B.class.getSimpleName();
 
     private Button buttonStartActivityA,buttonStartActivityB,buttonStartActivityC,buttonStartActivityD;
+    private TextView textViewTaskInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,8 @@ public class Activity_B extends BaseActivity {
         buttonStartActivityB=(Button)findViewById(R.id.buttonStartActivityB);
         buttonStartActivityC=(Button)findViewById(R.id.buttonStartActivityC);
         buttonStartActivityD=(Button)findViewById(R.id.buttonStartActivityD);
+
+        textViewTaskInfo=(TextView)findViewById(R.id.textViewTaskInfo);
 
         buttonStartActivityA.setOnClickListener(this);
         buttonStartActivityB.setOnClickListener(this);
@@ -42,7 +46,7 @@ public class Activity_B extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i(TAG,getAppTaskState());
+        textViewTaskInfo.setText(getAppTaskState());
 
     }
 

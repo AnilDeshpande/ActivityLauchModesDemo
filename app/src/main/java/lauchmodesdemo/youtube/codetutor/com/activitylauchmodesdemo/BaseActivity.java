@@ -44,26 +44,23 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected static String getAppTaskState(){
 
         StringBuilder stringBuilder=new StringBuilder();
-        int totalNumberOfTasks=activityManager.getRunningTasks(10).size();
+        int totalNumberOfTasks=activityManager.getRunningTasks(10).size();//Returns total number of tasks - stacks
         stringBuilder.append("\nTotal Number of Tasks: "+totalNumberOfTasks+"\n");
 
-        List<ActivityManager.RunningTaskInfo> taskInfo =activityManager.getRunningTasks(10);
+        List<ActivityManager.RunningTaskInfo> taskInfo =activityManager.getRunningTasks(10);//returns List of RunningTaskInfo - corresponding to tasks - stacks
 
         for(ActivityManager.RunningTaskInfo info:taskInfo){
-            stringBuilder.append("Task "+totalNumberOfTasks--+", Number of Activities : "+info.numActivities+"\n");
-            stringBuilder.append("TopActivity: "+info.topActivity.getClassName()+"\n");
-            stringBuilder.append("BaseActivity:"+info.baseActivity.getClassName()+"\n");
+            stringBuilder.append("Task "+totalNumberOfTasks--+", Number of Activities : "+info.numActivities+"\n");//Number of Activities in task - stack
+
+            // Display the root Activity of task-stack
+            stringBuilder.append("TopActivity: "+info.topActivity.getClassName().
+                    toString().replace("lauchmodesdemo.youtube.codetutor.com.activitylauchmodesdemo.","")+"\n");
+
+            // Display the top Activity of task-stack
+            stringBuilder.append("BaseActivity:"+info.baseActivity.getClassName().
+                    toString().replace("lauchmodesdemo.youtube.codetutor.com.activitylauchmodesdemo.","")+"\n");
             stringBuilder.append("\n\n");
         }
-
-        /*List<ActivityManager.AppTask> appTasks=activityManager.getAppTasks();
-        for(ActivityManager.AppTask task:appTasks){
-            ActivityManager.RecentTaskInfo recentTaskInfo=task.getTaskInfo();
-            stringBuilder.append("Number of Activities: "+recentTaskInfo.numActivities+"\n");
-            stringBuilder.append("TopActivity: "+recentTaskInfo.topActivity.getClassName()+"\n");
-            stringBuilder.append("BaseActivity:"+recentTaskInfo.baseActivity.getClassName()+"\n");
-            stringBuilder.append("\n\n");
-        }*/
         return stringBuilder.toString();
     }
 
