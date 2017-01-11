@@ -45,12 +45,12 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
         StringBuilder stringBuilder=new StringBuilder();
         int totalNumberOfTasks=activityManager.getRunningTasks(10).size();//Returns total number of tasks - stacks
-        stringBuilder.append("\nTotal Number of Tasks: "+totalNumberOfTasks+"\n");
+        stringBuilder.append("\nTotal Number of Tasks: "+totalNumberOfTasks+"\n\n");
 
         List<ActivityManager.RunningTaskInfo> taskInfo =activityManager.getRunningTasks(10);//returns List of RunningTaskInfo - corresponding to tasks - stacks
 
         for(ActivityManager.RunningTaskInfo info:taskInfo){
-            stringBuilder.append("Task "+totalNumberOfTasks--+", Number of Activities : "+info.numActivities+"\n");//Number of Activities in task - stack
+            stringBuilder.append("Task Id: "+info.id+", Number of Activities : "+info.numActivities+"\n");//Number of Activities in task - stack
 
             // Display the root Activity of task-stack
             stringBuilder.append("TopActivity: "+info.topActivity.getClassName().

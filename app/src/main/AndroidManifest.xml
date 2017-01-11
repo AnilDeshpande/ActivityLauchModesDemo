@@ -8,15 +8,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity_A">
+        <activity android:name=".Activity_A" android:launchMode="standard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity_B"/>
-        <activity android:name=".Activity_C"/>
-        <activity android:name=".Activity_D"/>
+        <activity android:name=".Activity_B" android:launchMode="singleTop"/>
+        <activity android:name=".Activity_C" android:launchMode="standard"/>
+        <activity android:name=".Activity_D" android:launchMode="standard"/>
     </application>
 
 </manifest>

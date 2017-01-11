@@ -9,9 +9,17 @@ import android.widget.TextView;
 public class Activity_C extends BaseActivity {
 
     private static final String TAG=Activity_C.class.getSimpleName();
+    private static int instanceCounter=0;
+    private int currentInstanceValue;
 
     private Button buttonStartActivityA,buttonStartActivityB,buttonStartActivityC,buttonStartActivityD;
-    private TextView textViewTaskInfo;
+    private TextView textViewTaskInfo, textViewInstanceValue;
+
+    public Activity_C(){
+        super();
+        instanceCounter++;
+        currentInstanceValue=instanceCounter;
+    }
 
 
     @Override
@@ -24,6 +32,8 @@ public class Activity_C extends BaseActivity {
         buttonStartActivityD=(Button)findViewById(R.id.buttonStartActivityD);
 
         textViewTaskInfo=(TextView)findViewById(R.id.textViewTaskInfo);
+        textViewInstanceValue=(TextView)findViewById(R.id.textViewInstanceValue);
+        textViewInstanceValue.append(",Current instance: "+currentInstanceValue);
 
         buttonStartActivityA.setOnClickListener(this);
         buttonStartActivityB.setOnClickListener(this);
@@ -47,6 +57,7 @@ public class Activity_C extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Log.i(TAG,"Instances: "+currentInstanceValue);
         textViewTaskInfo.setText(getAppTaskState());
     }
 }
