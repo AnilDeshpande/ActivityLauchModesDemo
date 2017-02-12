@@ -34,6 +34,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     protected void startActivity(Activity activity, Class targetActivityClass){
         Intent intent=new Intent(activity,targetActivityClass);
+        if(targetActivityClass.equals(Activity_B.class)){
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }
         startActivity(intent);
     }
 

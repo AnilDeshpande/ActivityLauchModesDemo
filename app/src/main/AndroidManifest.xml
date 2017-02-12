@@ -15,8 +15,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity_B" android:launchMode="singleTop"/>
-        <activity android:name=".Activity_C" android:launchMode="standard"/>
-        <activity android:name=".Activity_D" android:launchMode="standard"/>
+        <activity android:name=".Activity_C"/>
+        <activity android:name=".Activity_D"/>
     </application>
-
 </manifest>
